@@ -70,6 +70,7 @@ protected:
      * http://localhost.localdomain/ksystemlog/screenshots.php
      * [Thu May 19 18:00:19 2005] [notice] mod_jk2.post_config() first invocation
      * [Thu May 19 18:00:19 2005] [notice] Digest: generating secret for digest authentication ...
+     * [Sat Sep 08 02:44:17.723028 2018] [mpm_prefork:notice] [pid 800] AH00169: caught SIGTERM, shutting down
      * [client 127.0.0.1] PHP Parse error:  parse error, unexpected T_PRIVATE, expecting T_STRING in
      * /mnt/boulot/web/annivernet/src/fonctions/formulaire.inc.php on line 25
      */
@@ -108,7 +109,7 @@ protected:
             QString min = strDate.mid(14, 2);
             QString sec = strDate.mid(17, 2);
 
-            QString year = strDate.mid(20, 4);
+            QString year = strDate.right(4);
 
             date = QDate(year.toInt(), ParsingHelper::instance()->parseSyslogMonth(month), day.toInt());
             time = QTime(hour.toInt(), min.toInt(), sec.toInt());
